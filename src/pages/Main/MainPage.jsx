@@ -362,6 +362,7 @@ export default function MainPage() {
         FUT<span style={mainCss.blue}>(U)</span>RE {messageBar(188)} <span style={mainCss.blue}>(D)</span>REAM <br />
         {messageBar(114)} POTENTIAL {messageBar(62)} T<span style={mainCss.blue}>(E)</span>AM
       </div>
+      <div></div>
     </div>
   )
 }
