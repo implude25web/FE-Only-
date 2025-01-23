@@ -19,7 +19,8 @@ const mainCss = {
     justifyContent: 'center',
     padding: '2rem 5rem',
     flexDirection: 'Column',
-    gap: '13.75rem'
+    gap: '13.75rem',
+    alignItems: 'center',
   },
   slogansns : {
     display: 'flex',
@@ -61,7 +62,7 @@ const mainCss = {
   },
   blue: {
     color: 'var(--brand-500)'
-  }
+  },
 }
 
 const news = {
@@ -249,6 +250,9 @@ export default function MainPage() {
       fontWeight: '700',
       textAlign: 'center'
     }
+    mainCss.first = {
+      fontSize: '100px',
+    }
   } else {
     mainCss.container = {
       display: 'flex',
@@ -299,7 +303,7 @@ export default function MainPage() {
       fontSize: '4rem',
       fontWeight: '700',
       textAlign: 'center'
-    }
+    }   
   }
 
   function messageBar(n) {
@@ -348,69 +352,15 @@ export default function MainPage() {
 
   return (
     <div style={mainCss.container}>
-      <div style={mainCss.slogansns}> {/* 슬로건 및 SNS 사진 부분 */}
-        <div style={mainCss.slogan}>
-          <div style={mainCss.sloganMent}>우리의 상상이<br></br>세상을 바꿀 수 있도록.</div>
-          <img src={slogan} style={mainCss.img} alt="No image" />
-        </div>
-        <div style={mainCss.sns}>
-          <Link to='https://www.youtube.com/@implude_official/featured'>
-            <img src={youtube} style={mainCss.img} alt="No image"></img>
-            </Link>
-          <Link to='https://www.instagram.com/implude_official/'>
-            <img src={instagram} style={mainCss.img} alt="No image"></img>
-          </Link>
-        </div>
+      <div style = {mainCss.message}>
+        당신의 상상이 현실이 되도록<br />
+        {messageBar(200)} <span style = {mainCss.blue}>IMPLUDE</span>
       </div>
       <div style={mainCss.message}> {/* 임플루드 문구 부분 244 */}
         YOUR {messageBar(244)} <span style={mainCss.blue}>(IM)</span>PACT <br />
         <span style={mainCss.blue}>(P)</span>ASSION {messageBar(96)} <span style={mainCss.blue}>(L)</span>EARN {messageBar(132)} <br />
         FUT<span style={mainCss.blue}>(U)</span>RE {messageBar(188)} <span style={mainCss.blue}>(D)</span>REAM <br />
         {messageBar(114)} POTENTIAL {messageBar(62)} T<span style={mainCss.blue}>(E)</span>AM
-      </div>
-      <div> {/* 임플 뉴스 부분 */}
-        <div style={
-          {
-            width: '100%',
-            display: 'flex',
-            justifyContent: 'center'
-          }
-        }>  
-          <Right onClick={newsRight}/>
-          <Left onClick={newsLeft}/>
-        </div>
-        <div style={news.title}>
-          임플 뉴스
-        </div>
-        <div style={news.ulContainer}>
-          <ul style={news.ul}>
-            {newsDataState.map((props, idx) => {
-              const style = idx == mainNewsIdx ? news.mainli : news.li
-              const isMain = idx == mainNewsIdx ? true : false
-              if(props.imgSrc) {
-                return (
-                  <li style={style}>
-                    <NewsCard
-                      imgSrc = {props.imgSrc}
-                      title1 = {props.title1}
-                      title2 = {props.title2}
-                      link = {props.link}
-                      linkMsg = {props.linkMsg}
-                      color = {props.color}
-                      isMain = {isMain}
-                    ></NewsCard>
-                  </li>
-                )
-              } else {
-                return (
-                  <li style={news.li}>
-                    <img src={logo}></img>
-                  </li>
-                )
-              }
-            })}
-          </ul>
-        </div>
       </div>
     </div>
   )
